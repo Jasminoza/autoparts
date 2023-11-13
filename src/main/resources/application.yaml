@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://0.0.0.0:5432/autoparts_ap
+    username: postgres_AP_user
+    password: postgres_AP_pwd
+
+  liquibase:
+    change-log: autoparts-ap-db-postgres.yaml
+
+autodoc-auth:
+  username: AVS-10860
+  password: 55404404

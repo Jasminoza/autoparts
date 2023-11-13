@@ -1,0 +1,26 @@
+version: '0.1'
+
+services:
+  postgres-AP:
+    image: postgres:14-alpine
+    container_name: postgres-AP
+    restart: on-failure
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres_AP_user
+      POSTGRES_PASSWORD: postgres_AP_pwd
+      POSTGRES_DB: autoparts_AP
+      POSTGRES_DATABASE: autoparts_ap
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+#  autoparts:
+#    depends_on:
+#      - postgres-AP
+#    build:
+#      context: .
+#    environment:
+#      - BOT_NAME=${BOT_NAME}
+#      - BOT_TOKEN=${BOT_TOKEN}
+#    restart: always

@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1_001_create_table_autoparts
+      author: Nikita Yolkin
+      changes:
+        - createTable:
+            tableName: autoparts
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: autoparts_id_pk
+              - column:
+                  name: manufacturer_id
+                  type: integer
+                  constraints:
+                    nullable: false

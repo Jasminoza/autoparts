@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: v1_001_create_table_autoparts.yaml
+      relativeToChangelogFile: true
