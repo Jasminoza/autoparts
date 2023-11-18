@@ -18,4 +18,10 @@ public interface AutodocPartPriceClient extends AbstractPartPriceClient {
       @RequestParam(value = "isrecross") boolean isRecross,
       @RequestHeader("Authorization") String authorization
   );
+
+  @Override
+  @GetMapping(value = "/spareparts/511/33526855243/2?isrecross=false")
+  Sparepart getAmortZad(
+    @RequestHeader("Authorization") String authorization
+  );
 }

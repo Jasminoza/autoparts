@@ -1,8 +1,11 @@
-FROM openjdk:17-oracle
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} Autoparts.jar
-ENTRYPOINT ["java","-jar","/Autoparts.jar"]
+FROM eclipse-temurin:17-jdk-jammy
 
-#RUN mkdir /opt/app
-#COPY Autoparts.jar /opt/app
-#CMD ["java", "-jar", "/opt/app/Autoparts.jar"]
+WORKDIR /app
+
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:resolve
+
+COPY src ./src
+
+CMD ["./mvnw", "spring-boot:run"]

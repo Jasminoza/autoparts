@@ -28,4 +28,12 @@ public class AutodocSparepartsController extends AbstractSparepartsController {
     authService.updateToken(authResponse);
     return partPriceClient.getPart(false, "Bearer " + authResponse.getAccessToken());
   }
+
+  @ResponseBody
+  @GetMapping("/amortZad")
+  public Sparepart getAmortZad() {
+    AbstractAuthResponse authResponse = authService.getAuthResponse();
+    authService.updateToken(authResponse);
+    return partPriceClient.getAmortZad("Bearer " + authResponse.getAccessToken());
+  }
 }

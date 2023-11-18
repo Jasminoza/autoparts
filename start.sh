@@ -1,18 +1,21 @@
 #!/bin/bash
 
-# Pull new changes
-git pull
-
-# Prepare Jar
-mvn clean
-mvn package
-
 # Ensure, that docker-compose stopped
 docker-compose stop
 
-# Add environment variables
-export BOT_NAME=$1
-export BOT_TOKEN=$2
+# Delete old containers
+docker container prune -f
 
-# Start new deployment
+# Pull new changes
+git pull
+
+. ./setJava17.sh
+#read -p "Press enter to continue"
+echo $JAVA_HOME
+#read -p "Press enter to continue"
+
+# Prepare image
+docker build --tag autoparts .
+
+# Run docker compose
 docker-compose up --build -d

@@ -8,5 +8,5 @@ spring:
     change-log: autoparts-ap-db-postgres.yaml
 
 autodoc-auth:
-  username: AVS-10860
-  password: 55404404
+  username: autodoc-user
+  password: autodoc-password

@@ -1,7 +1,26 @@
 version: '0.1'
 
 services:
-  postgres-AP:
+  autoparts:
+    container_name: autoparts-app
+    image: autoparts:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - autoparts-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://autoparts-db:5432/autoparts_ap
+      - SPRING_DATASOURCE_USERNAME=postgres_AP_user
+      - SPRING_DATASOURCE_PASSWORD=postgres_AP_pwd
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - 8080:8080
+    restart: always
+    networks:
+      - spring-cloud-network
+
+  autoparts-db:
     image: postgres:14-alpine
     container_name: postgres-AP
     restart: on-failure
@@ -14,13 +33,9 @@ services:
       POSTGRES_DATABASE: autoparts_ap
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - spring-cloud-network
 
-#  autoparts:
-#    depends_on:
-#      - postgres-AP
-#    build:
-#      context: .
-#    environment:
-#      - BOT_NAME=${BOT_NAME}
-#      - BOT_TOKEN=${BOT_TOKEN}
-#    restart: always
+networks:
+  spring-cloud-network:
+    driver: bridge

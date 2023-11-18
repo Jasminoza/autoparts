@@ -13,4 +13,10 @@ public interface AbstractPartPriceClient {
   ) {
     throw new NotImplementedException();
   }
+
+  default Sparepart getAmortZad(
+    @RequestHeader("Authorization") String authorization
+  ) {
+    throw new NotImplementedException();
+  }
 }
