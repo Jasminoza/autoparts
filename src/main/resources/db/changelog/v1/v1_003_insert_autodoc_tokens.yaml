@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1_003_insert_autodoc_tokens
+      author: Nikita Yolkin
+      changes:
+        - insert:
+            tableName: tokens
+            columns:
+              - column:
+                  name: id
+                  value: '1'
+              - column:
+                  name: site
+                  value: 'WWW.AUTODOC.RU'
+              - column:
+                  name: token
+                  value: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IlNVUVNZUDhPNUtKWFlEWVVHV1paMEpJLTAtTEJUR0NGMTRCSTE2S1YiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiIyMzk1NzU2IiwibmFtZWlkIjoiMjM5NTc1NiIsInVuaXF1ZV9uYW1lIjoiTkdNWC0yNjk4NyIsImVtYWlsIjoidGUqKioqKkBnbWFpbC5jb20iLCJzdGF0dXMiOiIyIiwiZGlzY291bnQiOiLQntC_0YIxIiwiY2l0eSI6ItCd0L7QstC-0YHQuNCx0LjRgNGB0LoiLCJsYXRpdHVkZSI6IjU1MDMyMDc0IiwibG9uZ2l0dWRlIjoiODI5MzA2MjEiLCJjdXJyZW50YWNjZXNzbGV2ZWwiOiIyIiwibmFtZSI6ItGR0LvQuioqKiDQvSoqKiDQsioqKiIsImNpdHlpZCI6Ijc3IiwicGFyZW50aWQiOiIyMzQ4ODc5IiwicGhvbmUiOiIrNyAoKioqKSAqKiotNDktNDkiLCJ0b2tlbl91c2FnZSI6ImFjY2Vzc190b2tlbiIsImp0aSI6ImY4YjFiYmY3LTdlMGYtNDE4ZS1iYzE0LWEwYzRjMmUwYjg2MyIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJuYmYiOjE3MDA0NjIzMDMsImV4cCI6MTcwMDQ2MzUwMywiaWF0IjoxNzAwNDYyMzAzLCJpc3MiOiJodHRwczovL2F1dGguYXV0b2RvYy5ydS8ifQ.NMB6wCt5GMhiqyUGSWG6EuRkLdS4AmDTxLEo22gkM1db7HKINcoBhjyYmu4M_SerNdrgR2rJSzs60w0EiaMp1_e8HZjiPYUoARACGwU8xTND6R4rTT8UQOhHCDcXqr4yCo1H9GwYRa4TUaQgPfI0LNyZgpb7nOA4rbDjxvQEG6_Y4ygC6qQNLeO9d2X7n3gNJoJD6-ZUwHjJz3UL1pQi8blDPKwQVbhNcvbjZt-9WP0YsSsjx_Qrs15z0y7nRwTPLZdVUdTY8MeSV5iPWAWOcZChBSHAVFh57GPeyFKpPFsF-zblzMsokpozxW6RM_6nfpW4gp_Sc67KyjxvR6mT4g'
+              - column:
+                  name: valid_until
+                  value: '2022-12-31 00:00:00'
+              - column:
+                  name: token_type
+                  value: 'ACCESS'
+
+        - insert:
+            tableName: tokens
+            columns:
+              - column:
+                  name: id
+                  value: '2'
+              - column:
+                  name: site
+                  value: 'WWW.AUTODOC.RU'
+              - column:
+                  name: token
+                  value: 'CfDJ8E7WsxpYuOBErpSTQNb_xxb9fd4LeWg061XRyTW7CcbzwqfmzPjqQtn74iUFsTefhwoQcvpSOI21SUBl8id6Vr87BRiXeUD-X1vQjtOqCXylgaq0oqxb1W7Fq3Wiom1oDnqTXjBoIuo_DMD5-1qy8IlH30KKIVIu3oxVfwv7GbQ0fi1VjEE7JVoFGsT2-kY_F51wLhs7rBYoRzFGClJF8vXC5EUHzXf-x1H9nkXHHeW5InhDg2_M-53aQSDvoLMfQGmRk7O9IJbyrpFbo287kTPkBVaYDII0vWV5E95bFuROqKD57F4jh8MJlEJLWTDjm7o0nVVCVYb0euVQX4Fw4NOx6KT0f5Pf4n6VBpjBEG2jprO7gc-tv3Xevjuo8dnMG1gHfgq8ZTkeEAY-u-5Bl8_uOr-XeHMQ5CVRr4KYQApnVFonac0aqZh2BFukS83cJagQ77is19QE6Blbs6aTvZTkpwpmF1xWk2m2IvVlcMQIXxLp3BopyKbAVzb2-UpmWSlig_ELF_MWmZeHKR-DHmWGlgNYZ_thH3xv3nzMMUltp3oVwqUIxpaepVuo0TZNxHWVe3DiWpvkl4AMGE4sE94XTSaO91-E9aVYBJrhIT9iK3sCxmfXCGgJvcsWJaYk_V-Hyd957uF8WC82huI1HMt9BrGxUVjAJau4DefwYMPhhnqRTrtLRdfz2CatGoPK-72zZasvx8VWJvNiYkmMo43lumG5oU73rB8tg7AVQlJJl4CncE1g0C_lkU4bUV9vApbYRvgPyweZa7hR4KtSiTihBgHEKvWUdD3B95b0nF4k8IwmonKZSZY-1vxl9jzRsL8hVPr32cmZdR9o-GoPiNpyp7RmOk2FsAeG_yHAcb1kqJtzA5fQtb5Gnz8FUG7J5ZzuzmTOvweVLRtXBHZQ8_aPQOovTJKBxu0exYF4u0dkAB1rH1RgmMCmbezlrPWUAZBZyV9ikzJc5w1aJYLkaW_hoys2Ku8xt_OuOEYj1oHmeXGrF0iez50qz2N-9EPYg2M7Psr96wf3cdWnp3SW-S1507bzruYJwCGtp99-dgEAmL_eIhqjpZdcFHceiW82IcJkdOKUfj7Ctu_FiUlg0FeBos3mtJiBQo0buV4xue1Fq-HvGsiKRFApjqbZvRH242Ug5cQBisypZIhbR3ZZMqrHK5_06QL9EjxlPvSHU2FP8cWXV8X1uu28C2xV4jRnvY9M3GCBU1THBH9nDeTHIPJeYyCQ-DQB3sMNQPl_JtSOmtuE78kNdRLzBnBXnpolI0j37t5FFlHiS6oJlIoz1J1_oHbuThaYr8hTCMb0_1Y6P3VuwzzCZdC81o-8pNJyp-oMKN5OYopjtUs0Wk8IQ9UtNWEqJwKSs2WU8D2znUQpJP1_INmwFwoj-QSDHUdh0p7Jv3mkFg43BlwdD88fsYvH8Bg8oFbwHpO0QbFhp3sXHolDlw4Xk2xYh3J3XmiV-fH39hjIdANenM3739FkwevhX4xgztUszBcc6n5cdvcmZAogqvBs-5f6IXC2ixN2SlHkk2EO9Ag4c4vk5TsceGHrV5XkGDlmldLNBxuzJstbz4XDgHWoog8tgN56jeGhSsVUarxDy3MTH-cX9V7q_2YpVvMCe6D0FlDP8QspLX1F'
+              - column:
+                  name: valid_until
+                  value: '2022-12-31 00:00:00'
+              - column:
+                  name: token_type
+                  value: 'REFRESH'

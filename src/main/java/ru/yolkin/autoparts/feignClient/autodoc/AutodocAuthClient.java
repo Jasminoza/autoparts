@@ -12,6 +12,6 @@ import ru.yolkin.autoparts.model.auth.autodoc.AutodocAuthResponse;
 @FeignClient(value = "autodocAuth", url = "https://auth.autodoc.ru")
 public interface AutodocAuthClient extends AbstractAuthFeignClient {
   @PostMapping(value = "/token", consumes = APPLICATION_FORM_URLENCODED_VALUE)
-  @Headers("Content-Type: application/x-www-form-urlencoded")
+  @Headers("Content-Type: " + APPLICATION_FORM_URLENCODED_VALUE)
   AutodocAuthResponse getAuthResponse(AutodocAuthRequest tokenRequest);
 }

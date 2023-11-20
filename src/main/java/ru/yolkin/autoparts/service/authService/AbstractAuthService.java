@@ -8,6 +8,7 @@ import ru.yolkin.autoparts.config.AbstractAuthProperties;
 import ru.yolkin.autoparts.feignClient.AbstractAuthFeignClient;
 import ru.yolkin.autoparts.model.auth.AbstractAuthResponse;
 import ru.yolkin.autoparts.model.auth.AbstractToken;
+import ru.yolkin.autoparts.repository.AbstractAuthTokenRepository;
 
 @Service
 @AllArgsConstructor
@@ -15,14 +16,16 @@ import ru.yolkin.autoparts.model.auth.AbstractToken;
 public abstract class AbstractAuthService implements AuthService {
   public AbstractAuthFeignClient authClient;
   public AbstractAuthProperties properties;
-  public static AbstractToken token;
+  public AbstractAuthTokenRepository authRepo;
+  public static AbstractToken accessToken;
+  public static AbstractToken refreshToken;
 
   public abstract void initToken();
 
   public void updateToken(AbstractAuthResponse response) {
     log.info("IN updateToken(): ");
 
-    if (token == null) {
+    if (accessToken == null) {
       initToken();
     }
 
@@ -37,8 +40,8 @@ public abstract class AbstractAuthService implements AuthService {
   }
 
   private void updateCurrentToken(AbstractAuthResponse response) {
-    token.setToken(response.getAccessToken());
-    token.setValidUntil(LocalDateTime.now().plusSeconds(response.getExpiresIn()));
+    accessToken.setToken(response.getAccessToken());
+    accessToken.setValidUntil(LocalDateTime.now().plusSeconds(response.getExpiresIn()));
   }
 
   private boolean tokenNeedToBeUpdated() {
@@ -48,7 +51,7 @@ public abstract class AbstractAuthService implements AuthService {
   }
 
   private boolean tokenIsNull() {
-    if (token.getToken() == null) {
+    if (accessToken.getToken() == null) {
       log.info("autodocTokenString is null.");
       return true;
     }
@@ -57,7 +60,7 @@ public abstract class AbstractAuthService implements AuthService {
   }
 
   private boolean tokenIsBlankOrEmpty() {
-    String autodocTokenString = token.getToken();
+    String autodocTokenString = accessToken.getToken();
     if (autodocTokenString.isBlank()) {
       log.info("autodocTokenString is blank.");
       return true;
@@ -72,14 +75,14 @@ public abstract class AbstractAuthService implements AuthService {
   }
 
   private boolean tokenIsExpired() {
-    LocalDateTime validUntil = token.getValidUntil();
+    LocalDateTime validUntil = accessToken.getValidUntil();
 
     if (validUntil == null) {
       log.info("Token's 'validUntil' field is null.");
       return true;
     }
 
-    if (LocalDateTime.now().isAfter(token.getValidUntil())) {
+    if (LocalDateTime.now().isAfter(accessToken.getValidUntil())) {
       log.info("Token's validity time has been expired.");
       return true;
     }

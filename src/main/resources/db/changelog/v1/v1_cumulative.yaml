@@ -2,3 +2,9 @@ databaseChangeLog:
   - include:
       file: v1_001_create_table_autoparts.yaml
       relativeToChangelogFile: true
+  - include:
+      file: v1_002_create_table_tokens.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: v1_003_insert_autodoc_tokens.yaml
+      relativeToChangelogFile: true

@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import ru.yolkin.autoparts.config.AbstractAuthProperties;
 
 @Configuration
-@ConfigurationProperties(prefix = "autodoc-auth")
+@ConfigurationProperties(prefix = "autoparts.sites.autodoc.auth")
 public class AutodocAuthProperties extends AbstractAuthProperties {
 
 }
