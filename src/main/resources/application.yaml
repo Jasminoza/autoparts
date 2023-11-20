@@ -7,6 +7,23 @@ spring:
   liquibase:
     change-log: autoparts-ap-db-postgres.yaml
 
+  jpa:
+    hibernate:
+      ddl-auto: create
+
 autodoc-auth:
-  username: autodoc-user
-  password: autodoc-password
+  username: user
+  password: pwd
+
+autoparts:
+  sites:
+    autodoc:
+      enabled: true
+      auth:
+        username: usr
+        password: pwd
+    exist:
+      enabled: false
+    auth:
+      username: usr
+      password: pwd
