@@ -26,6 +26,7 @@
         <feign.form.spring.version>3.8.0</feign.form.spring.version>
         <h2.version>2.1.214</h2.version>
         <postgresql.version>42.6.0</postgresql.version>
+        <telegram.version>6.8.0</telegram.version>
     </properties>
 
     <dependencies>
@@ -40,11 +41,6 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -92,7 +88,16 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots-spring-boot-starter</artifactId>
+            <version>${telegram.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots-abilities</artifactId>
+            <version>${telegram.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
