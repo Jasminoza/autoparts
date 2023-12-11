@@ -11,10 +11,6 @@ spring:
     hibernate:
       ddl-auto: create
 
-autodoc-auth:
-  username: user
-  password: pwd
-
 autoparts:
   sites:
     autodoc:
