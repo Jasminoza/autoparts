@@ -16,7 +16,7 @@ import ru.yolkin.autoparts.repository.AbstractAuthTokenRepository;
 public abstract class AbstractAuthService implements AuthService {
   public AbstractAuthFeignClient authClient;
   public AbstractAuthProperties properties;
-  public AbstractAuthTokenRepository authRepo;
+  public AbstractAuthTokenRepository<AbstractToken> authRepo;
   public static AbstractToken accessToken;
   public static AbstractToken refreshToken;
 

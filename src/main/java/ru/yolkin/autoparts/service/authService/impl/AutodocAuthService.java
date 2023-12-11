@@ -26,7 +26,7 @@ public class AutodocAuthService extends AbstractAuthService {
   public AutodocAuthService(
     AutodocAuthClient authClient,
     AutodocAuthProperties properties,
-    AutodocAuthTokenRepository authRepo
+    AutodocAuthTokenRepository<AutodocToken> authRepo
   ) {
     super(authClient, properties, authRepo);
   }
@@ -51,11 +51,13 @@ public class AutodocAuthService extends AbstractAuthService {
   @Override
   public void initToken() {
     log.info("IN AutodocAuthService.initToken():");
-    Optional<AutodocToken> autodocAccessTokenOptional = authRepo.findById(TokensIds.AUTODOC_ACCESS_ID);
+    Optional<AbstractToken> autodocAccessTokenOptional = authRepo.findById(TokensIds.AUTODOC_ACCESS_ID);
     if (autodocAccessTokenOptional.isEmpty()) {
       String message = "Autodoc access token doesn't present in database. Fix migration scripts.";
       log.error(message);
       throw new NotImplementedException(message);
+    } else {
+      accessToken = autodocAccessTokenOptional.get();
     }
 
     Optional<AbstractToken> autodocRefreshTokenOptional = authRepo.findById(TokensIds.AUTODOC_REFRESH_ID);
@@ -63,6 +65,8 @@ public class AutodocAuthService extends AbstractAuthService {
       String message = "Autodoc refresh token doesn't present in database. Fix migration scripts.";
       log.error(message);
       throw new NotImplementedException(message);
+    } else {
+      refreshToken = autodocRefreshTokenOptional.get();
     }
 
     if (accessTokenIsExpired(autodocAccessTokenOptional.get())) {
@@ -105,6 +109,7 @@ public class AutodocAuthService extends AbstractAuthService {
   private void logAccessToken() {
     if (accessToken.getToken() != null) {
       log.info("Access token has been set. Saving to repository.");
+      authRepo.deleteById(TokensIds.AUTODOC_ACCESS_ID);
       AutodocToken savedAccessToken = (AutodocToken) authRepo.save(accessToken);
       log.info("Saved access token: " + savedAccessToken);
     } else {
@@ -115,6 +120,7 @@ public class AutodocAuthService extends AbstractAuthService {
   private void logRefreshToken() {
     if (refreshToken.getToken() != null) {
       log.info("Refresh token has been set. Saving to repository.");
+      authRepo.deleteById(TokensIds.AUTODOC_REFRESH_ID);
       AutodocToken savedRefreshToken = (AutodocToken) authRepo.save(refreshToken);
       log.info("Saved refresh token: " + savedRefreshToken);
     } else {
