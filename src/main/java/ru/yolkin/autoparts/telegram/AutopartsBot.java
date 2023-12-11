@@ -1,6 +1,7 @@
 package ru.yolkin.autoparts.telegram;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -10,6 +11,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ru.yolkin.autoparts.Utils.TelegramUtils;
 import ru.yolkin.autoparts.config.TelegramBotProperties;
 
 import java.util.ArrayList;
@@ -24,19 +26,7 @@ import static ru.yolkin.autoparts.Utils.TelegramBotCommands.START;
 public class AutopartsBot extends TelegramLongPollingBot {
   @Autowired
   private TelegramBotProperties config;
-  private static final String HELP_TEXT = """
-    Чтобы юзать мегабота - отправь /findPart.
-        я пока ниче не умею, но ты все равно отправляй че нить.
-          пупупуууу;
-          
-          ```java
-          public class HelloWorld {
-              public static void main(String[] args) {
-                  System.out.println("Hello, World!");
-              }
-          }
-          ```
-    """;
+  private static final String HELP_TEXT = getHelpText();
   private static final String START_TEXT = "Hello from bot";
 
   public AutopartsBot(TelegramBotProperties config) {
@@ -89,6 +79,23 @@ public class AutopartsBot extends TelegramLongPollingBot {
     } catch (TelegramApiException e) {
       log.error(Arrays.toString(e.getStackTrace()));
     }
+  }
+
+  @NotNull
+  private static String getHelpText() {
+    return """
+      Чтобы юзать мегабота - отправь /findPart.
+          я пока ниче не умею, но ты все равно отправляй че нить.
+            пупупуууу;
+      """
+      + TelegramUtils.getJavaCode
+      ("""
+              public class HelloWorld {
+                  public static void main(String[] args) {
+                      System.out.println("Hello, World!");
+                  }
+              }
+        """);
   }
 }
 
