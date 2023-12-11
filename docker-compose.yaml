@@ -18,11 +18,11 @@ services:
       - 8080:8080
     restart: always
     networks:
-      - spring-cloud-network
+      - "spring-cloud-network"
 
   autoparts-db:
     image: postgres:14-alpine
-    container_name: postgres-AP
+    container_name: autoparts-db
     restart: on-failure
     ports:
       - 5432:5432
@@ -34,7 +34,7 @@ services:
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - spring-cloud-network
+      - "spring-cloud-network"
 
 networks:
   spring-cloud-network:

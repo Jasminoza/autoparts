@@ -45,9 +45,7 @@ public abstract class AbstractAuthService implements AuthService {
   }
 
   private boolean tokenNeedToBeUpdated() {
-    return tokenIsNull()
-        || tokenIsBlankOrEmpty()
-        || tokenIsExpired();
+    return tokenIsNull() || tokenIsBlankOrEmpty() || tokenIsExpired();
   }
 
   private boolean tokenIsNull() {

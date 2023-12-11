@@ -8,16 +8,20 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
+@ToString
 @Entity
 @Table(name = "tokens")
-@AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorColumn(name = "site", discriminatorType = DiscriminatorType.STRING)
 public class AbstractToken {

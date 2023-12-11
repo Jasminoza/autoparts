@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.yolkin.autoparts.config.autodoc.AutodocAuthProperties;
 import ru.yolkin.autoparts.feignClient.autodoc.AutodocAuthClient;
+import ru.yolkin.autoparts.model.auth.AbstractRefreshTokensResponse;
 import ru.yolkin.autoparts.model.auth.AbstractToken;
 import ru.yolkin.autoparts.model.auth.TokenType;
 import ru.yolkin.autoparts.model.auth.TokensIds;
@@ -39,6 +40,12 @@ public class AutodocAuthService extends AbstractAuthService {
     request.setRememberClient(false);
     log.info("AutodocAuthRequest: " + request);
     return ((AutodocAuthClient) authClient).getAuthResponse(request);
+  }
+
+  @Override
+  public AbstractRefreshTokensResponse getRefreshTokensResponse() {
+    //TODO::
+    return null;
   }
 
   @Override
