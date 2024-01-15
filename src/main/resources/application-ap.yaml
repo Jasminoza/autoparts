@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://0.0.0.0:5432/autoparts_ap
+    username: postgres_AP_user
+    password: postgres_AP_pwd
+
+  liquibase:
+    change-log: autoparts-ap-db-postgres.yaml
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+autoparts:
+  sites:
+    autodoc:
+      enabled: true
+      auth:
+        username: NGMX-26987
+        password: 55404404
+    exist:
+      enabled: false
+    auth:
+      username: NGMX-26987
+      password: 55404404
+
+telegram:
+  enabled: true
+  botName: "AutopartsPricesBot"
+  botToken: "6461008424:AAGmUebStGW62YGv-9JxK-9Bhrq6qtcTp80"
