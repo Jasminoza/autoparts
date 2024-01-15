@@ -24,7 +24,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: valid_until
-                  type: date
+                  type: timestamp
                   constraints:
                     nullable: false
               - column:

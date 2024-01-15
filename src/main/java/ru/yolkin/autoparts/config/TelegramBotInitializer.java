@@ -2,6 +2,7 @@ package ru.yolkin.autoparts.config;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import ru.yolkin.autoparts.telegram.AutopartsBot;
 @Component
 @Slf4j
 @AllArgsConstructor
+@ConditionalOnProperty(name = "telegram.enabled", havingValue = "true")
 public class TelegramBotInitializer {
   private AutopartsBot bot;
 
